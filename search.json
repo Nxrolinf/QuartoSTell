@@ -12,7 +12,7 @@
   {
     "objectID": "first.html",
     "href": "first.html",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "",
     "text": "Overview\nThis lab explores data storytelling using R through: - Exploratory data analysis (EDA) - Transformations and skewness - Regression visualization - Time series anomalies - Composite plots - Interactive visualization (Shiny) - A capstone narrative",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "first.html#raw-distribution",
     "href": "first.html#raw-distribution",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Raw Distribution",
     "text": "Raw Distribution\n\n\nCode\ndata(\"house_prices\")\n\np1_raw &lt;- ggplot(house_prices, aes(x = price)) +\n  geom_histogram(bins = 50, fill = \"steelblue\", color = \"white\") +\n  scale_x_continuous(labels = label_dollar(scale = 1e-6, suffix = \"M\")) +\n  labs(\n    title = \"Distribution of House Prices (Raw)\",\n    subtitle = \"Right-skewed distribution\",\n    x = \"Price (USD)\",\n    y = \"Count\"\n  ) +\n  theme_bw()\n\np1_raw",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "first.html#log-transformation",
     "href": "first.html#log-transformation",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Log Transformation",
     "text": "Log Transformation\n\n\nCode\nhouse_prices &lt;- house_prices %&gt;%\n  mutate(\n    log10_price = log10(price),\n    log10_size  = log10(sqft_living)\n  )\n\np1_log &lt;- ggplot(house_prices, aes(x = log10_price)) +\n  geom_histogram(bins = 50, fill = \"darkorange\", color = \"white\") +\n  labs(\n    title = \"Distribution of House Prices (log10 scale)\",\n    subtitle = \"More symmetric distribution\",\n    x = \"log10(Price)\",\n    y = \"Count\"\n  ) +\n  theme_bw()\n\np1_log\n\n\n\n\n\n\n\n\n\n\nInterpretation\nThe raw distribution is heavily right-skewed due to high-value outliers.\nThe log transformation reveals a more symmetric, near-normal distribution, improving interpretability.",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "first.html#interaction-model",
     "href": "first.html#interaction-model",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Interaction Model",
     "text": "Interaction Model\n\n\nCode\np2_interaction &lt;- ggplot(house_sub,\n                         aes(x = log10_size, y = log10_price, color = condition)) +\n  geom_point(alpha = 0.15) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(title = \"Interaction Model\") +\n  theme_bw()\n\np2_interaction",
     "crumbs": [
@@ -52,7 +52,7 @@
   {
     "objectID": "first.html#parallel-slopes-model",
     "href": "first.html#parallel-slopes-model",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Parallel Slopes Model",
     "text": "Parallel Slopes Model\n\n\nCode\np2_parallel &lt;- ggplot(house_sub,\n                      aes(x = log10_size, y = log10_price, color = condition)) +\n  geom_point(alpha = 0.15) +\n  moderndive::geom_parallel_slopes(se = FALSE) +\n  labs(title = \"Parallel Slopes Model\") +\n  theme_bw()\n\np2_parallel\n\n\n\n\n\n\n\n\n\n\nInterpretation\nSlopes are similar across conditions, supporting a simpler parallel slopes interpretation: - Size affects price consistently - Condition shifts baseline price",
     "crumbs": [
@@ -62,7 +62,7 @@
   {
     "objectID": "first.html#peak-detection",
     "href": "first.html#peak-detection",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Peak Detection",
     "text": "Peak Detection\n\n\nCode\nbirths_1999 %&gt;%\n  arrange(desc(births)) %&gt;%\n  head()\n\n\n# A tibble: 6 × 6\n   year month date_of_month date       day_of_week births\n  &lt;int&gt; &lt;int&gt;         &lt;int&gt; &lt;date&gt;     &lt;ord&gt;        &lt;int&gt;\n1  1999     9             9 1999-09-09 Thurs        14540\n2  1999    12            21 1999-12-21 Tues         13508\n3  1999     9             8 1999-09-08 Wed          13437\n4  1999     9            21 1999-09-21 Tues         13384\n5  1999     9            28 1999-09-28 Tues         13358\n6  1999     7             7 1999-07-07 Wed          13343\n\n\n\nInterpretation\nThe largest spike occurs on September 9, 1999 (9/9/99), likely due to cultural preferences influencing scheduled births.",
     "crumbs": [
@@ -72,7 +72,7 @@
   {
     "objectID": "first.html#plot-a",
     "href": "first.html#plot-a",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Plot A",
     "text": "Plot A\n\n\nCode\np4a &lt;- ggplot(house_sub,\n              aes(x = condition, y = log10_price, fill = condition)) +\n  geom_boxplot() +\n  theme_bw()",
     "crumbs": [
@@ -82,7 +82,7 @@
   {
     "objectID": "first.html#plot-b",
     "href": "first.html#plot-b",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Plot B",
     "text": "Plot B\n\n\nCode\np4b &lt;- ggplot(house_sub,\n              aes(x = log10_size, y = log10_price,\n                  color = condition, shape = condition)) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme_bw()",
     "crumbs": [
@@ -92,7 +92,7 @@
   {
     "objectID": "first.html#combined",
     "href": "first.html#combined",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Combined",
     "text": "Combined\n\n\nCode\np4a | p4b",
     "crumbs": [
@@ -102,7 +102,7 @@
   {
     "objectID": "first.html#step-1-distribution",
     "href": "first.html#step-1-distribution",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Step 1: Distribution",
     "text": "Step 1: Distribution\n\n\nCode\ncap1 &lt;- p1_raw / p1_log\ncap1",
     "crumbs": [
@@ -112,7 +112,7 @@
   {
     "objectID": "first.html#step-2-condition-premium",
     "href": "first.html#step-2-condition-premium",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Step 2: Condition Premium",
     "text": "Step 2: Condition Premium\n\n\nCode\nmedian_by_cond &lt;- house_prices %&gt;%\n  group_by(condition) %&gt;%\n  summarise(median_price = median(price), .groups = \"drop\")\n\ncap2 &lt;- ggplot(median_by_cond,\n               aes(x = condition, y = median_price, fill = condition)) +\n  geom_col() +\n  scale_y_continuous(labels = label_dollar()) +\n  theme_bw()\n\ncap2",
     "crumbs": [
@@ -122,7 +122,7 @@
   {
     "objectID": "first.html#step-3-size-condition",
     "href": "first.html#step-3-size-condition",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Step 3: Size + Condition",
     "text": "Step 3: Size + Condition\n\n\nCode\ncap3 &lt;- ggplot(house_sub,\n               aes(x = log10_size, y = log10_price, color = condition)) +\n  geom_point(alpha = 0.2) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme_bw()\n\ncap3",
     "crumbs": [
@@ -132,7 +132,7 @@
   {
     "objectID": "first.html#final-narrative",
     "href": "first.html#final-narrative",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
     "section": "Final Narrative",
     "text": "Final Narrative\n\n\nCode\ncap1 | (cap2 / cap3)",
     "crumbs": [
@@ -142,9 +142,9 @@
   {
     "objectID": "first.html#call-to-action",
     "href": "first.html#call-to-action",
-    "title": "2  Lab 3: Data Storytelling and Visualization in R",
-    "section": "2.1 Call to Action",
-    "text": "2.1 Call to Action\n\nSellers should invest in condition improvements.\nBuyers can find value in larger homes needing upgrades.",
+    "title": "Lab 3: Data Storytelling and Visualization in R",
+    "section": "Call to Action",
+    "text": "Call to Action\n\nSellers should invest in condition improvements.\nBuyers can find value in larger homes needing upgrades.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Lab 3: Data Storytelling and Visualization in R</span>"
     ]
