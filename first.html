@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
 
 <title>2&nbsp; Lab 3: Data Storytelling and Visualization in R – Quarto Story Telling</title>
 <style>
@@ -171,44 +170,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#exercise-1-exploratory-data-analysis-skewness" id="toc-exercise-1-exploratory-data-analysis-skewness" class="nav-link" data-scroll-target="#exercise-1-exploratory-data-analysis-skewness">Exercise 1: Exploratory Data Analysis &amp; Skewness</a>
   <ul class="collapse">
-  <li><a href="#raw-distribution" id="toc-raw-distribution" class="nav-link" data-scroll-target="#raw-distribution"><span class="header-section-number">2.1</span> Raw Distribution</a></li>
-  <li><a href="#log-transformation" id="toc-log-transformation" class="nav-link" data-scroll-target="#log-transformation"><span class="header-section-number">2.2</span> Log Transformation</a>
+  <li><a href="#raw-distribution" id="toc-raw-distribution" class="nav-link" data-scroll-target="#raw-distribution">Raw Distribution</a></li>
+  <li><a href="#log-transformation" id="toc-log-transformation" class="nav-link" data-scroll-target="#log-transformation">Log Transformation</a>
   <ul class="collapse">
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">2.2.1</span> Interpretation</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#exercise-2-interaction-vs-parallel-slopes" id="toc-exercise-2-interaction-vs-parallel-slopes" class="nav-link" data-scroll-target="#exercise-2-interaction-vs-parallel-slopes">Exercise 2: Interaction vs Parallel Slopes</a>
   <ul class="collapse">
-  <li><a href="#interaction-model" id="toc-interaction-model" class="nav-link" data-scroll-target="#interaction-model"><span class="header-section-number">2.3</span> Interaction Model</a></li>
-  <li><a href="#parallel-slopes-model" id="toc-parallel-slopes-model" class="nav-link" data-scroll-target="#parallel-slopes-model"><span class="header-section-number">2.4</span> Parallel Slopes Model</a>
+  <li><a href="#interaction-model" id="toc-interaction-model" class="nav-link" data-scroll-target="#interaction-model">Interaction Model</a></li>
+  <li><a href="#parallel-slopes-model" id="toc-parallel-slopes-model" class="nav-link" data-scroll-target="#parallel-slopes-model">Parallel Slopes Model</a>
   <ul class="collapse">
-  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1"><span class="header-section-number">2.4.1</span> Interpretation</a></li>
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1">Interpretation</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#exercise-3-time-series-anomaly" id="toc-exercise-3-time-series-anomaly" class="nav-link" data-scroll-target="#exercise-3-time-series-anomaly">Exercise 3: Time Series Anomaly</a>
   <ul class="collapse">
-  <li><a href="#peak-detection" id="toc-peak-detection" class="nav-link" data-scroll-target="#peak-detection"><span class="header-section-number">2.5</span> Peak Detection</a>
+  <li><a href="#peak-detection" id="toc-peak-detection" class="nav-link" data-scroll-target="#peak-detection">Peak Detection</a>
   <ul class="collapse">
-  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2"><span class="header-section-number">2.5.1</span> Interpretation</a></li>
+  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2">Interpretation</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#exercise-4-composite-visualization" id="toc-exercise-4-composite-visualization" class="nav-link" data-scroll-target="#exercise-4-composite-visualization">Exercise 4: Composite Visualization</a>
   <ul class="collapse">
-  <li><a href="#plot-a" id="toc-plot-a" class="nav-link" data-scroll-target="#plot-a"><span class="header-section-number">2.6</span> Plot A</a></li>
-  <li><a href="#plot-b" id="toc-plot-b" class="nav-link" data-scroll-target="#plot-b"><span class="header-section-number">2.7</span> Plot B</a></li>
-  <li><a href="#combined" id="toc-combined" class="nav-link" data-scroll-target="#combined"><span class="header-section-number">2.8</span> Combined</a></li>
+  <li><a href="#plot-a" id="toc-plot-a" class="nav-link" data-scroll-target="#plot-a">Plot A</a></li>
+  <li><a href="#plot-b" id="toc-plot-b" class="nav-link" data-scroll-target="#plot-b">Plot B</a></li>
+  <li><a href="#combined" id="toc-combined" class="nav-link" data-scroll-target="#combined">Combined</a></li>
   </ul></li>
   <li><a href="#exercise-5-shiny-app" id="toc-exercise-5-shiny-app" class="nav-link" data-scroll-target="#exercise-5-shiny-app">Exercise 5: Shiny App</a></li>
   <li><a href="#capstone-what-drives-house-prices" id="toc-capstone-what-drives-house-prices" class="nav-link" data-scroll-target="#capstone-what-drives-house-prices">Capstone: What Drives House Prices?</a>
   <ul class="collapse">
-  <li><a href="#step-1-distribution" id="toc-step-1-distribution" class="nav-link" data-scroll-target="#step-1-distribution"><span class="header-section-number">2.9</span> Step 1: Distribution</a></li>
-  <li><a href="#step-2-condition-premium" id="toc-step-2-condition-premium" class="nav-link" data-scroll-target="#step-2-condition-premium"><span class="header-section-number">2.10</span> Step 2: Condition Premium</a></li>
-  <li><a href="#step-3-size-condition" id="toc-step-3-size-condition" class="nav-link" data-scroll-target="#step-3-size-condition"><span class="header-section-number">2.11</span> Step 3: Size + Condition</a></li>
-  <li><a href="#final-narrative" id="toc-final-narrative" class="nav-link" data-scroll-target="#final-narrative"><span class="header-section-number">2.12</span> Final Narrative</a></li>
+  <li><a href="#step-1-distribution" id="toc-step-1-distribution" class="nav-link" data-scroll-target="#step-1-distribution">Step 1: Distribution</a></li>
+  <li><a href="#step-2-condition-premium" id="toc-step-2-condition-premium" class="nav-link" data-scroll-target="#step-2-condition-premium">Step 2: Condition Premium</a></li>
+  <li><a href="#step-3-size-condition" id="toc-step-3-size-condition" class="nav-link" data-scroll-target="#step-3-size-condition">Step 3: Size + Condition</a></li>
+  <li><a href="#final-narrative" id="toc-final-narrative" class="nav-link" data-scroll-target="#final-narrative">Final Narrative</a></li>
   </ul></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a>
   <ul class="collapse">
-  <li><a href="#call-to-action" id="toc-call-to-action" class="nav-link" data-scroll-target="#call-to-action"><span class="header-section-number">2.13</span> Call to Action</a></li>
+  <li><a href="#call-to-action" id="toc-call-to-action" class="nav-link" data-scroll-target="#call-to-action"><span class="header-section-number">2.1</span> Call to Action</a></li>
   </ul></li>
   <li><a href="#appendix-shiny-app-code" id="toc-appendix-shiny-app-code" class="nav-link" data-scroll-target="#appendix-shiny-app-code">Appendix: Shiny App Code</a></li>
   </ul>
@@ -261,8 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exercise-1-exploratory-data-analysis-skewness" class="level1 unnumbered">
 <h1 class="unnumbered">Exercise 1: Exploratory Data Analysis &amp; Skewness</h1>
-<section id="raw-distribution" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="raw-distribution"><span class="header-section-number">2.1</span> Raw Distribution</h2>
+<section id="raw-distribution" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="raw-distribution">Raw Distribution</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -290,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="log-transformation" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="log-transformation"><span class="header-section-number">2.2</span> Log Transformation</h2>
+<section id="log-transformation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="log-transformation">Log Transformation</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -321,8 +320,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="interpretation" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">2.2.1</span> Interpretation</h3>
+<section id="interpretation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="interpretation">Interpretation</h3>
 <p>The raw distribution is heavily right-skewed due to high-value outliers.<br>
 The log transformation reveals a more symmetric, near-normal distribution, improving interpretability.</p>
 <hr>
@@ -342,8 +341,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Average"</span>, <span class="st">"Good"</span>, <span class="st">"Excellent"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="interaction-model" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="interaction-model"><span class="header-section-number">2.3</span> Interaction Model</h2>
+<section id="interaction-model" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="interaction-model">Interaction Model</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -365,8 +364,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </section>
-<section id="parallel-slopes-model" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="parallel-slopes-model"><span class="header-section-number">2.4</span> Parallel Slopes Model</h2>
+<section id="parallel-slopes-model" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="parallel-slopes-model">Parallel Slopes Model</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -387,8 +386,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </div>
-<section id="interpretation-1" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">2.4.1</span> Interpretation</h3>
+<section id="interpretation-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="interpretation-1">Interpretation</h3>
 <p>Slopes are similar across conditions, supporting a simpler parallel slopes interpretation: - Size affects price consistently - Condition shifts baseline price</p>
 <hr>
 </section>
@@ -421,8 +420,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </div>
-<section id="peak-detection" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="peak-detection"><span class="header-section-number">2.5</span> Peak Detection</h2>
+<section id="peak-detection" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="peak-detection">Peak Detection</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -442,8 +441,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 6  1999     7             7 1999-07-07 Wed          13343</code></pre>
 </div>
 </div>
-<section id="interpretation-2" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="interpretation-2"><span class="header-section-number">2.5.1</span> Interpretation</h3>
+<section id="interpretation-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="interpretation-2">Interpretation</h3>
 <p>The largest spike occurs on <strong>September 9, 1999 (9/9/99)</strong>, likely due to cultural preferences influencing scheduled births.</p>
 <hr>
 </section>
@@ -451,8 +450,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </section>
 <section id="exercise-4-composite-visualization" class="level1 unnumbered">
 <h1 class="unnumbered">Exercise 4: Composite Visualization</h1>
-<section id="plot-a" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="plot-a"><span class="header-section-number">2.6</span> Plot A</h2>
+<section id="plot-a" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="plot-a">Plot A</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -463,8 +462,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </details>
 </div>
 </section>
-<section id="plot-b" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="plot-b"><span class="header-section-number">2.7</span> Plot B</h2>
+<section id="plot-b" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="plot-b">Plot B</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -477,8 +476,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </details>
 </div>
 </section>
-<section id="combined" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="combined"><span class="header-section-number">2.8</span> Combined</h2>
+<section id="combined" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="combined">Combined</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -511,8 +510,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </section>
 <section id="capstone-what-drives-house-prices" class="level1 unnumbered">
 <h1 class="unnumbered">Capstone: What Drives House Prices?</h1>
-<section id="step-1-distribution" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="step-1-distribution"><span class="header-section-number">2.9</span> Step 1: Distribution</h2>
+<section id="step-1-distribution" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="step-1-distribution">Step 1: Distribution</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -528,8 +527,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </section>
-<section id="step-2-condition-premium" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="step-2-condition-premium"><span class="header-section-number">2.10</span> Step 2: Condition Premium</h2>
+<section id="step-2-condition-premium" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="step-2-condition-premium">Step 2: Condition Premium</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -554,8 +553,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </section>
-<section id="step-3-size-condition" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="step-3-size-condition"><span class="header-section-number">2.11</span> Step 3: Size + Condition</h2>
+<section id="step-3-size-condition" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="step-3-size-condition">Step 3: Size + Condition</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -576,8 +575,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </section>
-<section id="final-narrative" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="final-narrative"><span class="header-section-number">2.12</span> Final Narrative</h2>
+<section id="final-narrative" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="final-narrative">Final Narrative</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -601,8 +600,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 <li><strong>Condition strongly affects price levels</strong>.</li>
 <li><strong>Size increases price consistently across conditions</strong>.</li>
 </ul>
-<section id="call-to-action" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="call-to-action"><span class="header-section-number">2.13</span> Call to Action</h2>
+<section id="call-to-action" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="call-to-action"><span class="header-section-number">2.1</span> Call to Action</h2>
 <ul>
 <li>Sellers should invest in condition improvements.</li>
 <li>Buyers can find value in larger homes needing upgrades.</li>
