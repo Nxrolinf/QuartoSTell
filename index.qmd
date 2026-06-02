@@ -1,0 +1,12 @@
+---
+title: "Story telling in R"
+format: html
+---
+
+# Introduction {.unnumbered}
+
+These pages introduce time series analysis in R through a recipe-based approach.
+
+Each chapter includes a short conceptual introduction, usually followed by practical, self-contained recipes focused on common tasks.
+
+A version of this textbook is available at <https://nxrolinf.github.io/QuartoSTell>

@@ -1,0 +1,314 @@
+---
+title: "Lab 3: Data Storytelling and Visualization in R"
+author: ""
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+editor:
+  markdown:
+    wrap: 72
+---
+
+# Overview
+
+This lab explores data storytelling using R through: - Exploratory data
+analysis (EDA) - Transformations and skewness - Regression
+visualization - Time series anomalies - Composite plots - Interactive
+visualization (Shiny) - A capstone narrative
+
+------------------------------------------------------------------------
+
+# Setup
+
+```{r}
+# Install if needed
+# install.packages(c("tidyverse", "moderndive", "fivethirtyeight",
+#                    "patchwork", "scales", "shiny"))
+
+library(tidyverse)
+library(moderndive)
+library(fivethirtyeight)
+library(patchwork)
+library(scales)
+```
+
+------------------------------------------------------------------------
+
+# Exercise 1: Exploratory Data Analysis & Skewness
+
+## Raw Distribution
+
+```{r}
+data("house_prices")
+
+p1_raw <- ggplot(house_prices, aes(x = price)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white") +
+  scale_x_continuous(labels = label_dollar(scale = 1e-6, suffix = "M")) +
+  labs(
+    title = "Distribution of House Prices (Raw)",
+    subtitle = "Right-skewed distribution",
+    x = "Price (USD)",
+    y = "Count"
+  ) +
+  theme_bw()
+
+p1_raw
+```
+
+## Log Transformation
+
+```{r}
+house_prices <- house_prices %>%
+  mutate(
+    log10_price = log10(price),
+    log10_size  = log10(sqft_living)
+  )
+
+p1_log <- ggplot(house_prices, aes(x = log10_price)) +
+  geom_histogram(bins = 50, fill = "darkorange", color = "white") +
+  labs(
+    title = "Distribution of House Prices (log10 scale)",
+    subtitle = "More symmetric distribution",
+    x = "log10(Price)",
+    y = "Count"
+  ) +
+  theme_bw()
+
+p1_log
+```
+
+### Interpretation
+
+The raw distribution is heavily right-skewed due to high-value
+outliers.\
+The log transformation reveals a more symmetric, near-normal
+distribution, improving interpretability.
+
+------------------------------------------------------------------------
+
+# Exercise 2: Interaction vs Parallel Slopes
+
+```{r}
+house_prices <- house_prices %>%
+  mutate(condition = factor(condition, levels = 1:5,
+                            labels = c("Poor","Fair","Average","Good","Excellent")))
+
+house_sub <- house_prices %>%
+  filter(condition %in% c("Average", "Good", "Excellent"))
+```
+
+## Interaction Model
+
+```{r}
+p2_interaction <- ggplot(house_sub,
+                         aes(x = log10_size, y = log10_price, color = condition)) +
+  geom_point(alpha = 0.15) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Interaction Model") +
+  theme_bw()
+
+p2_interaction
+```
+
+## Parallel Slopes Model
+
+```{r}
+p2_parallel <- ggplot(house_sub,
+                      aes(x = log10_size, y = log10_price, color = condition)) +
+  geom_point(alpha = 0.15) +
+  moderndive::geom_parallel_slopes(se = FALSE) +
+  labs(title = "Parallel Slopes Model") +
+  theme_bw()
+
+p2_parallel
+```
+
+### Interpretation
+
+Slopes are similar across conditions, supporting a simpler parallel
+slopes interpretation: - Size affects price consistently - Condition
+shifts baseline price
+
+------------------------------------------------------------------------
+
+# Exercise 3: Time Series Anomaly
+
+```{r}
+data("US_births_1994_2003")
+
+births_1999 <- US_births_1994_2003 %>%
+  filter(year == 1999) %>%
+  mutate(date = as.Date(paste(year, month, date_of_month, sep = "-")))
+```
+
+```{r}
+ggplot(births_1999, aes(x = date, y = births)) +
+  geom_line(color = "steelblue") +
+  labs(title = "Daily Births in 1999")
+```
+
+## Peak Detection
+
+```{r}
+births_1999 %>%
+  arrange(desc(births)) %>%
+  head()
+```
+
+### Interpretation
+
+The largest spike occurs on **September 9, 1999 (9/9/99)**, likely due
+to cultural preferences influencing scheduled births.
+
+------------------------------------------------------------------------
+
+# Exercise 4: Composite Visualization
+
+## Plot A
+
+```{r}
+p4a <- ggplot(house_sub,
+              aes(x = condition, y = log10_price, fill = condition)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+## Plot B
+
+```{r}
+p4b <- ggplot(house_sub,
+              aes(x = log10_size, y = log10_price,
+                  color = condition, shape = condition)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_bw()
+```
+
+## Combined
+
+```{r}
+p4a | p4b
+```
+
+------------------------------------------------------------------------
+
+# Exercise 5: Shiny App
+
+> Run separately as `app.R`
+
+```{r}
+# shinyApp(ui, server)
+```
+
+(App code omitted in rendering but included in source file)
+
+------------------------------------------------------------------------
+
+# Capstone: What Drives House Prices?
+
+## Step 1: Distribution
+
+```{r}
+cap1 <- p1_raw / p1_log
+cap1
+```
+
+## Step 2: Condition Premium
+
+```{r}
+median_by_cond <- house_prices %>%
+  group_by(condition) %>%
+  summarise(median_price = median(price), .groups = "drop")
+
+cap2 <- ggplot(median_by_cond,
+               aes(x = condition, y = median_price, fill = condition)) +
+  geom_col() +
+  scale_y_continuous(labels = label_dollar()) +
+  theme_bw()
+
+cap2
+```
+
+## Step 3: Size + Condition
+
+```{r}
+cap3 <- ggplot(house_sub,
+               aes(x = log10_size, y = log10_price, color = condition)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_bw()
+
+cap3
+```
+
+## Final Narrative
+
+```{r}
+cap1 | (cap2 / cap3)
+```
+
+------------------------------------------------------------------------
+
+# Conclusions
+
+- House prices are **right-skewed**, requiring transformation.
+- **Condition strongly affects price levels**.
+- **Size increases price consistently across conditions**.
+
+## Call to Action
+
+- Sellers should invest in condition improvements.
+- Buyers can find value in larger homes needing upgrades.
+
+------------------------------------------------------------------------
+
+# Appendix: Shiny App Code
+
+```{r}
+library(shiny)
+
+house_shiny <- house_prices %>%
+  filter(condition %in% c("Average", "Good", "Excellent"))
+
+ui <- fluidPage(
+  titlePanel("House Prices Explorer"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("condition_select", "Condition:",
+                  choices = c("Average", "Good", "Excellent"))
+    ),
+    mainPanel(plotOutput("scatter_plot"))
+  )
+)
+
+server <- function(input, output) {
+  filtered_data <- reactive({
+    house_shiny %>% filter(condition == input$condition_select)
+  })
+
+  output$scatter_plot <- renderPlot({
+    ggplot(filtered_data(),
+           aes(x = log10_size, y = log10_price)) +
+      geom_point(alpha = 0.3) +
+      geom_smooth(method = "lm") +
+      theme_bw()
+  })
+}
+
+# shinyApp(ui, server)
+```
+
+::: callout-important
+## Work task
+
+For the final part of the lab, you must produce a coherent data story
+that includes:
+
+1.  **At least three different plot types**.
+2.  **Proper annotation** (titles, axis labels with units, and
+    captions).
+3.  **A call to action** or a concluding summary of what the visuals
+    reveal.
+:::

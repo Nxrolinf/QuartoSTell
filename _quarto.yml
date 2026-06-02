@@ -1,0 +1,36 @@
+project:
+  type: "book"
+
+book:
+  title: "Quarto Story Telling"
+  author: "Alexandra-Emilia Fortis"
+  chapters:
+    - index.qmd
+    - first.qmd
+
+#bibliography: references.bib
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - brand
+    toc: true
+    number-sections: true
+    code-fold: true
+  pdf:
+    documentclass: scrbook
+    classoption:
+      - oneside
+      - open=any
+      - DIV=12
+      - BCOR=0mm
+
+execute:
+  echo: true
+  warning: false
+  message: false
+
+
+editor: visual
+
