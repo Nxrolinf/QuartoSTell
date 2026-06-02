@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Quarto Story Telling",
     "section": "",
-    "text": "Introduction\nThese pages introduce time series analysis in R through a recipe-based approach.\nEach chapter includes a short conceptual introduction, usually followed by practical, self-contained recipes focused on common tasks.\nA version of this textbook is available at https://nxrolinf.github.io/QuartoSTell",
+    "text": "Introduction\nData interpretation and storytelling mean understanding the results of data analysis, answering important questions, and sharing the findings with others. Visual tools like graphs, charts, plots, and dashboards are often used to make the information clearer and easier to explain. In this chapter, we will look at different data analysis tools and techniques, as well as the different types of data analytics.\nA version of this textbook is available at https://nxrolinf.github.io/QuartoSTell",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Storytelling in R</span>"
     ]
