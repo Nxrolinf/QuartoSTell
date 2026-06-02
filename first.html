@@ -146,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Story telling in R</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Storytelling in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -189,12 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2">Interpretation</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#exercise-4-composite-visualization" id="toc-exercise-4-composite-visualization" class="nav-link" data-scroll-target="#exercise-4-composite-visualization">Exercise 4: Composite Visualization</a>
-  <ul class="collapse">
-  <li><a href="#plot-a" id="toc-plot-a" class="nav-link" data-scroll-target="#plot-a">Plot A</a></li>
-  <li><a href="#plot-b" id="toc-plot-b" class="nav-link" data-scroll-target="#plot-b">Plot B</a></li>
-  <li><a href="#combined" id="toc-combined" class="nav-link" data-scroll-target="#combined">Combined</a></li>
-  </ul></li>
+  <li><a href="#exercise-4-composite-visualization" id="toc-exercise-4-composite-visualization" class="nav-link" data-scroll-target="#exercise-4-composite-visualization">Exercise 4: Composite Visualization</a></li>
   <li><a href="#exercise-5-shiny-app" id="toc-exercise-5-shiny-app" class="nav-link" data-scroll-target="#exercise-5-shiny-app">Exercise 5: Shiny App</a></li>
   <li><a href="#capstone-what-drives-house-prices" id="toc-capstone-what-drives-house-prices" class="nav-link" data-scroll-target="#capstone-what-drives-house-prices">Capstone: What Drives House Prices?</a>
   <ul class="collapse">
@@ -448,20 +443,29 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </section>
 <section id="exercise-4-composite-visualization" class="level1 unnumbered">
 <h1 class="unnumbered">Exercise 4: Composite Visualization</h1>
-<section id="plot-a" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="plot-a">Plot A</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Plot A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Plot B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Combined</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p4a <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(house_sub,</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> log10_price, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>p4a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="first_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-</section>
-<section id="plot-b" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="plot-b">Plot B</h2>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -470,12 +474,19 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">color =</span> condition, <span class="at">shape =</span> condition)) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>p4b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="first_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-</section>
-<section id="combined" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="combined">Combined</h2>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -489,8 +500,9 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
 </div>
 </div>
 </div>
-<hr>
-</section>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-5-shiny-app" class="level1 unnumbered">
 <h1 class="unnumbered">Exercise 5: Shiny App</h1>
@@ -1074,8 +1086,8 @@ The log transformation reveals a more symmetric, near-normal distribution, impro
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Story telling in R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Story telling in R</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Storytelling in R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Storytelling in R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
